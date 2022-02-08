@@ -22,11 +22,28 @@ body {
   margin-left: 20px;
 }
 
-.card-image {
+.image {
   height: 60%;
 }
 
 img {
   width: 100%;
   height: 100%;
+}
+
+.delete {
+  background-color: red;
+  width: 100%;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  height: 36px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete:hover {
+  opacity: 0.8;
+  cursor: pointer;
 }

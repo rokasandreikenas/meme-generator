@@ -16,7 +16,7 @@ const handleSubmitForm = (event) => {
     method: "POST",
     body: JSON.stringify(meme),
     headers: { "Content-type": "application/json; charset=UTF-8" },
-  });
+  }).catch((error) => console.error(error));
 };
 
 form.addEventListener("submit", handleSubmitForm);
