@@ -1,9 +1,22 @@
-fetch("http://localhost:3000/memes", {
-  method: "POST",
-  body: JSON.stringify({
-    title: "Test title",
-    subtitle: "Test subtitle",
-    src: "https://cdn.vox-cdn.com/thumbor/r26X7f8EuoS5YQHoYs15mQqfYAY=/0x0:1800x1179/1400x1050/filters:focal(676x269:964x557):no_upscale()/cdn.vox-cdn.com/uploads/chorus_image/image/66741310/3zlqxf_copy.0.jpg",
-  }),
-  headers: { "Content-type": "application/json; charset=UTF-8" },
-});
+const form = document.querySelector("form");
+
+const handleSubmitForm = (event) => {
+  event.preventDefault();
+  const title = document.querySelector("input[name=title]");
+  const subtitle = document.querySelector("input[name=subtitle]");
+  const src = document.querySelector("input[name=src]");
+
+  const meme = {
+    title: title.value,
+    subtitle: subtitle.value,
+    src: src.value,
+  };
+
+  fetch("http://localhost:3000/memes", {
+    method: "POST",
+    body: JSON.stringify(meme),
+    headers: { "Content-type": "application/json; charset=UTF-8" },
+  });
+};
+
+form.addEventListener("submit", handleSubmitForm);
