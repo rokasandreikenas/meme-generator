@@ -1,3 +1,5 @@
+import { removeItem } from "./modules/array.js";
+
 fetch("http://localhost:3000/memes")
   .then((response) => response.json())
   .then((memes) => {
@@ -25,7 +27,7 @@ const handleDeleteMeme = (id, memes) => {
   })
     .then((response) => response.json())
     .then(() => {
-      const newMemes = memes.filter((meme) => meme.id !== id);
+      const newMemes = removeItem(memes, id);
       renderMemes(newMemes);
     })
     .catch((error) => console.error(error));

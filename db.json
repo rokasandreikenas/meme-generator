@@ -1,3 +1,10 @@
 {
-  "memes": []
+  "memes": [
+    {
+      "title": "asd",
+      "subtitle": "asd",
+      "src": "",
+      "id": 1
+    }
+  ]
 }
