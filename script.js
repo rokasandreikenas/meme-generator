@@ -18,15 +18,14 @@ const renderMemes = (memes) => {
   });
 };
 
-const handleDeleteMeme = (event, id, memes) => {
-  event.preventDefault();
+const handleDeleteMeme = (id, memes) => {
   fetch(`http://localhost:3000/memes/${id}`, {
     method: "DELETE",
     headers: { "Content-type": "application/json; charset=UTF-8" },
   })
     .then((response) => response.json())
-    .then((deletedMeme) => {
-      const newMemes = memes.filter((meme) => meme.id !== deletedMeme.id);
+    .then(() => {
+      const newMemes = memes.filter((meme) => meme.id !== id);
       renderMemes(newMemes);
     })
     .catch((error) => console.error(error));
@@ -50,8 +49,8 @@ const createMemeCard = (meme, memes) => {
   imageContainer.setAttribute("class", "image");
   deleteButton.setAttribute("class", "delete");
 
-  deleteButton.addEventListener("click", (event) =>
-    handleDeleteMeme(event, meme.id, memes)
+  deleteButton.addEventListener("click", () =>
+    handleDeleteMeme(meme.id, memes)
   );
 
   imageContainer.append(image);
